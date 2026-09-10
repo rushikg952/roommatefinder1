@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roommate Finder | Connect with Ideal Roommates</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ==================== HEADER & NAVBAR ==================== -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="#" class="logo" id="nav-logo" data-view="home">
+        <span class="logo-icon">🏠</span>
+        <span class="logo-text">Roommate<strong>Finder</strong></span>
+      </a>
+
+      <!-- Mobile Navigation Hamburger -->
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <!-- Navigation Links -->
+      <nav class="nav-menu" id="nav-menu">
+        <a href="#home" class="nav-link active" data-view="home">Home</a>
+        <a href="#search" class="nav-link" data-view="search">Find Roommates</a>
+        <a href="#create" class="nav-link" data-view="create">Create Profile</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================== SECTION 1: HOME / LANDING ==================== -->
+    <section id="view-home" class="view-section active">
+      <div class="hero-section">
+        <div class="container hero-container">
+          <div class="hero-content">
+            <span class="pill-badge">🎓 For Students & Young Professionals</span>
+            <h1 class="hero-title">Find Compatible Roommates With Zero Stress.</h1>
+            <p class="hero-desc">
+              Roommate Finder connects you with like-minded peers based on your location, monthly budget, and personal lifestyle preferences. No awkward interviews, just good matches.
+            </p>
+            <div class="hero-actions">
+              <button class="btn btn-primary" id="hero-find-btn" data-view="search">
+                🔍 Find a Roommate
+              </button>
+              <button class="btn btn-secondary" id="hero-create-btn" data-view="create">
+                ✏️ Create Your Profile
+              </button>
+            </div>
+            <div class="hero-stats">
+              <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Free to browse</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">Easy</span>
+                <span class="stat-label">Budget matching</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">Direct</span>
+                <span class="stat-label">Peer connections</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-card-preview">
+            <div class="preview-badge">✨ Recent Match</div>
+            <div class="preview-avatar">🌱</div>
+            <h3>Alex Rivera, 22</h3>
+            <p class="preview-loc">📍 Boston, MA</p>
+            <div class="preview-tags">
+              <span class="tag">Budget: $850/mo</span>
+              <span class="tag">Early Riser</span>
+              <span class="tag">Quiet & Studious</span>
+            </div>
+            <p class="preview-quote">"Junior studying Bio. Looking for a neat flatmate near campus!"</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Highlights -->
+      <section class="features-section">
+        <div class="container">
+          <h2 class="section-title text-center">How Roommate Finder Helps You</h2>
+          <p class="section-subtitle text-center">Simple tools designed to make shared living pleasant and affordable.</p>
+
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">💰</div>
+              <h3>Budget Alignment</h3>
+              <p>Filter candidates according to your maximum rent target to avoid financial strain.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">📍</div>
+              <h3>Location First</h3>
+              <p>Find roommates searching in the exact city or university area you want to live in.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">🤝</div>
+              <h3>Lifestyle Compatibility</h3>
+              <p>Compare sleep schedules, cleanliness habits, and social habits before signing a lease.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ==================== SECTION 2: ROOMMATE SEARCH ==================== -->
+    <section id="view-search" class="view-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h1 class="page-heading">Browse Roommate Listings</h1>
+            <p class="page-subheading">Explore available roommates or refine by city and maximum budget.</p>
+          </div>
+          <button class="btn btn-outline" data-view="create">+ Add My Profile</button>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="filter-card">
+          <div class="filter-group">
+            <label for="filter-location">City / Location</label>
+            <select id="filter-location" class="form-control">
+              <option value="all">All Cities</option>
+              <option value="Boston, MA">Boston, MA</option>
+              <option value="New York, NY">New York, NY</option>
+              <option value="Austin, TX">Austin, TX</option>
+              <option value="Chicago, IL">Chicago, IL</option>
+              <option value="San Francisco, CA">San Francisco, CA</option>
+              <option value="Seattle, WA">Seattle, WA</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="filter-budget">Max Budget: <strong id="budget-value-display">$1500/mo</strong></label>
+            <input type="range" id="filter-budget" min="500" max="2000" step="50" value="1500" class="range-slider">
+          </div>
+
+          <div class="filter-actions">
+            <button id="reset-filters-btn" class="btn btn-secondary btn-sm">Reset Filters</button>
+          </div>
+        </div>
+
+        <!-- Results Counter & Grid -->
+        <div class="results-header">
+          <span id="results-count" class="results-count">Loading roommates...</span>
+        </div>
+
+        <div id="roommates-grid" class="roommates-grid">
+          <!-- Roommate cards are injected dynamically via script.js -->
+        </div>
+
+        <!-- No Results Fallback -->
+        <div id="no-results" class="no-results hidden">
+          <div class="no-results-icon">🔎</div>
+          <h3>No roommates found</h3>
+          <p>Try adjusting your location or raising your budget threshold.</p>
+          <button id="no-results-reset-btn" class="btn btn-primary btn-sm">Clear Filters</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 3: USER PROFILE FORM ==================== -->
+    <section id="view-create" class="view-section">
+      <div class="container form-container">
+        <div class="form-card">
+          <div class="form-header">
+            <h1 class="page-heading">Create Your Profile</h1>
+            <p class="page-subheading">Share your details so potential roommates can find and connect with you.</p>
+          </div>
+
+          <!-- Alert for success feedback -->
+          <div id="form-alert" class="alert hidden"></div>
+
+          <form id="profile-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="user-name">Full Name <span class="req">*</span></label>
+                <input type="text" id="user-name" class="form-control" placeholder="e.g. Jordan Lee" required>
+                <span class="field-error" id="error-name"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="user-age">Age <span class="req">*</span></label>
+                <input type="number" id="user-age" class="form-control" placeholder="e.g. 21" min="17" max="99" required>
+                <span class="field-error" id="error-age"></span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="user-gender">Your Gender <span class="req">*</span></label>
+                <select id="user-gender" class="form-control" required>
+                  <option value="">Select your gender</option>
+                  <option value="Female">Female</option>
+                  <option value="Male">Male</option>
+                  <option value="Non-binary">Non-binary</option>
+                  <option value="Prefer not to say">Prefer not to say</option>
+                </select>
+                <span class="field-error" id="error-gender"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="user-location">City / Location <span class="req">*</span></label>
+                <input type="text" id="user-location" class="form-control" placeholder="e.g. Boston, MA" required>
+                <span class="field-error" id="error-location"></span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="user-budget">Monthly Budget ($ USD) <span class="req">*</span></label>
+                <input type="number" id="user-budget" class="form-control" placeholder="e.g. 950" min="200" max="10000" step="25" required>
+                <span class="field-error" id="error-budget"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="user-pref-gender">Preferred Roommate Gender <span class="req">*</span></label>
+                <select id="user-pref-gender" class="form-control" required>
+                  <option value="Any">Any / No preference</option>
+                  <option value="Female">Female only</option>
+                  <option value="Male">Male only</option>
+                  <option value="Non-binary">Non-binary</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="user-lifestyle">Lifestyle Preference <span class="req">*</span></label>
+              <select id="user-lifestyle" class="form-control" required>
+                <option value="">Select primary lifestyle</option>
+                <option value="Early Riser & Quiet">Early Riser & Quiet</option>
+                <option value="Night Owl & Studious">Night Owl & Studious</option>
+                <option value="Neat & Organized">Neat & Organized</option>
+                <option value="Social & Active">Social & Active</option>
+                <option value="Pet-Friendly & Relaxed">Pet-Friendly & Relaxed</option>
+                <option value="Focused Student / Hybrid Work">Focused Student / Hybrid Work</option>
+              </select>
+              <span class="field-error" id="error-lifestyle"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="user-bio">Short Bio <span class="req">*</span></label>
+              <textarea id="user-bio" class="form-control" rows="4" placeholder="Briefly describe your schedule, major/profession, cleanliness, and what you are looking for in a roommate..." required></textarea>
+              <span class="field-error" id="error-bio"></span>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary btn-block">Save & Add to Roommate Listings</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== PROFILE DETAILS MODAL ==================== -->
+  <div id="profile-modal" class="modal-backdrop hidden">
+    <div class="modal-dialog">
+      <button id="modal-close-btn" class="modal-close" aria-label="Close modal">&times;</button>
+      
+      <div class="modal-header">
+        <div id="modal-avatar" class="modal-avatar">👤</div>
+        <div>
+          <h2 id="modal-name" class="modal-title">Roommate Name</h2>
+          <p id="modal-location" class="modal-subtitle">Location</p>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-badges">
+          <div class="detail-pill">
+            <span class="pill-label">Monthly Budget</span>
+            <strong id="modal-budget" class="pill-value">$0/mo</strong>
+          </div>
+          <div class="detail-pill">
+            <span class="pill-label">Gender</span>
+            <strong id="modal-gender" class="pill-value">-</strong>
+          </div>
+          <div class="detail-pill">
+            <span class="pill-label">Prefers</span>
+            <strong id="modal-pref-gender" class="pill-value">Any</strong>
+          </div>
+          <div class="detail-pill">
+            <span class="pill-label">Lifestyle</span>
+            <strong id="modal-lifestyle" class="pill-value">-</strong>
+          </div>
+        </div>
+
+        <div class="modal-section">
+          <h3>About Me</h3>
+          <p id="modal-bio" class="modal-bio-text">Bio description...</p>
+        </div>
+
+        <!-- Simulated Contact Box -->
+        <div id="contact-feedback" class="contact-feedback hidden">
+          <div class="contact-feedback-content">
+            <span class="contact-icon">📬</span>
+            <div>
+              <strong>Contact Request Initiated!</strong>
+              <p id="contact-hint">In this 35% MVP demo, a notification has been sent. You can reach out directly via simulated email:</p>
+              <span id="contact-email" class="contact-email">user@example.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="modal-contact-btn" class="btn btn-primary">✉️ Contact Roommate</button>
+        <button id="modal-dismiss-btn" class="btn btn-secondary">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-info">
+        <span class="logo-text">Roommate<strong>Finder</strong></span>
+        <p class="footer-tagline">A student-friendly project connecting compatible flatmates with ease.</p>
+      </div>
+      <div class="footer-note">
+        <p>Roommate Finder MVP • 35% Prototype Demonstration</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
